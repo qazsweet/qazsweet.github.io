@@ -1,3 +1,6 @@
+##This blog is based on the following theme.
+Thanks for design and share.
+
 ##Saigon - Mansonry Jekyll Blog Theme
 
 * Color palette of http://clrs.cc
