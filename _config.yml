@@ -1,9 +1,9 @@
 permalink: /:categories/:title/
-url: "http://example.com"
-full_name: "Qazsweet blog"
+url: "http://qazsweet.github.io"
+full_name: "Qazsweet's blog"
 first_name: "Erin"
 last_name: "Sweet"
-blog_title: "Title"
+blog_title: "qazSweet"
 author_img_name_path: "/images/users/user.png"
 disqus_shortname: "example"
 copyright_year: "2019"
