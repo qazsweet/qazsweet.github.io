@@ -1,0 +1,197 @@
+<!DOCTYPE html>  
+<html>  
+<head>  
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />  
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />  
+    <title>Travel Map </title>  
+    <style type="text/css">  
+        html{height:100%}  
+        body{height:100%;margin:0px;padding:0px}  
+        #container{height:100%}  
+    </style> 
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=3.0&ak=apvwY3fyGzhrB8bPrsVQD5RQLTgVPKrP"></script>
+</head>
+
+<body> 
+	<div style="width:100%; height:100%; border:#000 solid 1px;" id="dituContent"></div>
+</body>
+<script type="text/javascript">
+ //创建和初始化地图函数：
+    function initMap(){
+        createMap();//创建地图
+        setMapEvent();//设置地图事件
+        addMapControl();//向地图添加控件
+        addMarker();//向地图中添加marker
+        addMarker2();//向地图中添加marker        
+    }
+
+    //创建地图函数：
+    function createMap(){
+        var map = new BMap.Map("dituContent");//在百度地图容器中创建一个地图
+        var point = new BMap.Point(113.625, 34.757);//定义一个中心点坐标
+        map.centerAndZoom(point,5);//设定地图的中心点和坐标并将地图显示在地图容器中
+        window.map = map;//将map变量存储在全局
+    }
+
+    //地图事件设置函数：
+    function setMapEvent(){
+        map.enableDragging();//启用地图拖拽事件，默认启用(可不写)
+        map.enableScrollWheelZoom();//启用地图滚轮放大缩小
+        map.enableDoubleClickZoom();//启用鼠标双击放大，默认启用(可不写)
+        map.enableKeyboard();//启用键盘上下左右键移动地图
+    }
+
+    //地图控件添加函数：
+    function addMapControl(){
+        //向地图中添加缩放控件
+    var ctrl_nav = new BMap.NavigationControl({anchor:BMAP_ANCHOR_TOP_LEFT,type:BMAP_NAVIGATION_CONTROL_LARGE});
+    map.addControl(ctrl_nav);
+        //向地图中添加缩略图控件
+    var ctrl_ove = new BMap.OverviewMapControl({anchor:BMAP_ANCHOR_BOTTOM_RIGHT,isOpen:1});
+    map.addControl(ctrl_ove);
+        //向地图中添加比例尺控件
+    var ctrl_sca = new BMap.ScaleControl({anchor:BMAP_ANCHOR_BOTTOM_LEFT});
+    map.addControl(ctrl_sca);
+    }
+
+    //标注点数组
+    var markerArr = [{title:"北京",content:"我的备注",point:"116.407|39.904",isOpen:0,icon:{w:21,h:21,l:0,t:0,x:6,lb:5}} //
+         ,{title:"成都",content:"我的备注",point:"104.067|30.573",isOpen:0,icon:{w:21,h:21,l:0,t:0,x:6,lb:5}} //
+         ,{title:"上海",content:"我的备注",point:"121.474|31.230",isOpen:0,icon:{w:21,h:21,l:0,t:0,x:6,lb:5}} //
+         ,{title:"广州",content:"我的备注",point:"113.264|23.129",isOpen:0,icon:{w:21,h:21,l:0,t:0,x:6,lb:5}} //
+         ,{title:"桂林",content:"我的备注",point:"110.180|25.234",isOpen:0,icon:{w:21,h:21,l:0,t:0,x:6,lb:5}} //
+         ,{title:"贵阳",content:"我的备注",point:"106.630|26.648",isOpen:0,icon:{w:21,h:21,l:0,t:0,x:6,lb:5}} //
+         ,{title:"长沙",content:"我的备注",point:"112.939|28.228",isOpen:0,icon:{w:21,h:21,l:0,t:0,x:6,lb:5}} //
+         ,{title:"重庆",content:"我的备注",point:"106.912|29.432",isOpen:0,icon:{w:21,h:21,l:0,t:0,x:6,lb:5}} //
+         ,{title:"兰州",content:"我的备注",point:"112.939|28.228",isOpen:0,icon:{w:21,h:21,l:0,t:0,x:6,lb:5}} //
+         ,{title:"西安",content:"我的备注",point:"108.939|34.342",isOpen:0,icon:{w:21,h:21,l:0,t:0,x:6,lb:5}} //
+         ,{title:"北戴河",content:"我的备注",point:"119.485|39.835",isOpen:0,icon:{w:21,h:21,l:0,t:0,x:6,lb:5}} //
+         ,{title:"大连",content:"我的备注",point:"121.615|38.914",isOpen:0,icon:{w:21,h:21,l:0,t:0,x:6,lb:5}} //
+         ];
+    //标注点数组
+    var markerArr2 = [{title:"潮州",content:"我的备注",point:"116.623|23.657",isOpen:0,icon:{w:21,h:21,l:0,t:0,x:6,lb:5}} //
+         ,{title:"漠河",content:"我的备注",point:"122.539|52.972",isOpen:0,icon:{w:21,h:21,l:0,t:0,x:6,lb:5}} //
+         ,{title:"烟台",content:"我的备注",point:"121.448|37.465",isOpen:0,icon:{w:21,h:21,l:0,t:0,x:6,lb:5}} //
+         ,{title:"拉萨",content:"我的备注",point:"91.172|29.625",isOpen:0,icon:{w:21,h:21,l:0,t:0,x:6,lb:5}} //
+         ,{title:"洱海",content:"我的备注",point:"100.193|25.801",isOpen:0,icon:{w:21,h:21,l:0,t:0,x:6,lb:5}} //
+         ,{title:"嘉峪关",content:"我的备注",point:"98.289|39.773",isOpen:0,icon:{w:21,h:21,l:0,t:0,x:6,lb:5}} //
+         ,{title:"京都",content:"我的备注",point:"135.768|35.012",isOpen:0,icon:{w:21,h:21,l:0,t:0,x:6,lb:5}} //
+         ,{title:"马赛",content:"我的备注",point:"5.369|43.297",isOpen:0,icon:{w:21,h:21,l:0,t:0,x:6,lb:5}} //
+         ,{title:"帕萨迪纳",content:"我的备注",point:"-118.145|34.149",isOpen:0,icon:{w:21,h:21,l:0,t:0,x:6,lb:5}} //
+         ,{title:"波士顿",content:"我的备注",point:"-71.059|42.360",isOpen:0,icon:{w:21,h:21,l:0,t:0,x:6,lb:5}} //
+         ,{title:"雷克雅未克",content:"我的备注",point:"-21.943|64.147",isOpen:0,icon:{w:21,h:21,l:0,t:0,x:6,lb:5}} //
+         ];
+    //创建marker
+    function addMarker(){
+        for(var i=0;i<markerArr.length;i++){
+            var json = markerArr[i];
+            var p0 = json.point.split("|")[0];
+            var p1 = json.point.split("|")[1];
+            var point = new BMap.Point(p0,p1);
+            var iconImg = createIcon(json.icon);
+            var marker = new BMap.Marker(point,{icon:iconImg});
+            var iw = createInfoWindow(i);
+            var label = new BMap.Label(json.title,{"offset":new BMap.Size(json.icon.lb-json.icon.x+10,-20)});
+            marker.setLabel(label);
+            map.addOverlay(marker);
+            label.setStyle({
+            			//borderColor:"#FFC0CB",
+                        background:"#87CEFA",
+                        color:"#333",
+                        cursor:"pointer"
+            });
+
+            (function(){
+                var index = i;
+                var _iw = createInfoWindow(i);
+                var _marker = marker;
+                _marker.addEventListener("click",function(){
+                    this.openInfoWindow(_iw);
+                });
+                _iw.addEventListener("open",function(){
+                    _marker.getLabel().hide();
+                })
+                _iw.addEventListener("close",function(){
+                    _marker.getLabel().show();
+                })
+                label.addEventListener("click",function(){
+                    _marker.openInfoWindow(_iw);
+                })
+                if(!!json.isOpen){
+                    label.hide();
+                    _marker.openInfoWindow(_iw);
+                }
+            })()
+        }
+    }
+    //创建InfoWindow
+    function createInfoWindow(i){
+        var json = markerArr[i];
+        var iw = new BMap.InfoWindow("<b class='iw_poi_title' title='" + json.title + "'>" + json.title + "</b><div class='iw_poi_content'>"+json.content+"</div>");
+        return iw;
+    }
+    //创建一个Icon
+    function createIcon(json){
+        var icon = new BMap.Icon("../img/loc.png", new BMap.Size(json.w,json.h),{imageOffset: new BMap.Size(-json.l,-json.t),infoWindowOffset:new BMap.Size(json.lb+5,1),offset:new BMap.Size(json.x,json.h)})
+        return icon;
+    }
+
+
+    //for 2
+    //创建marker
+    function addMarker2(){
+        for(var i=0;i<markerArr2.length;i++){
+            var json = markerArr2[i];
+            var p0 = json.point.split("|")[0];
+            var p1 = json.point.split("|")[1];
+            var point = new BMap.Point(p0,p1);
+            var iconImg = createIcon2(json.icon);
+            var marker = new BMap.Marker(point,{icon:iconImg});
+            var iw = createInfoWindow2(i);
+            var label = new BMap.Label(json.title,{"offset":new BMap.Size(json.icon.lb-json.icon.x+10,-20)});
+            marker.setLabel(label);
+            map.addOverlay(marker);
+            label.setStyle({
+                        //borderColor:"#FFC0CB",
+                        background:"#FFC0CB",
+                        color:"#333",
+                        cursor:"pointer"
+            });
+
+            (function(){
+                var index = i;
+                var _iw = createInfoWindow2(i);
+                var _marker = marker;
+                _marker.addEventListener("click",function(){
+                    this.openInfoWindow(_iw);
+                });
+                _iw.addEventListener("open",function(){
+                    _marker.getLabel().hide();
+                })
+                _iw.addEventListener("close",function(){
+                    _marker.getLabel().show();
+                })
+                label.addEventListener("click",function(){
+                    _marker.openInfoWindow(_iw);
+                })
+                if(!!json.isOpen){
+                    label.hide();
+                    _marker.openInfoWindow(_iw);
+                }
+            })()
+        }
+    }
+    //创建InfoWindow
+    function createInfoWindow2(i){
+        var json = markerArr2[i];
+        var iw = new BMap.InfoWindow("<b class='iw_poi_title' title='" + json.title + "'>" + json.title + "</b><div class='iw_poi_content'>"+json.content+"</div>");
+        return iw;
+    }
+    //创建一个Icon
+    function createIcon2(json){
+        var icon = new BMap.Icon("../img/loc.png", new BMap.Size(json.w,json.h),{imageOffset: new BMap.Size(-json.l,-json.t),infoWindowOffset:new BMap.Size(json.lb+5,1),offset:new BMap.Size(json.x,json.h)})
+        return icon;
+    }
+    initMap();//创建和初始化地图
+</script>
+</html>
