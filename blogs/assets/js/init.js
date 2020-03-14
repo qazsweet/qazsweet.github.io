@@ -122,11 +122,12 @@ jQuery(document).ready(function() {
     fade: 1200
   });  
 
+  //标题背景图片设置
   $("#home.backstretched").backstretch(["assets/images/home/slide-1.jpg", "assets/images/home/slide-2.jpg", "assets/images/home/slide-3.jpg", ], {
     duration: 6000,
     fade: 1200
   });
-
+  //标题背景图片翻页
   $("a[href*=#prev-slide]").on("click",function(event) {
       event.preventDefault(); 
       jQuery('#home.backstretched').data('backstretch').prev();
@@ -134,6 +135,20 @@ jQuery(document).ready(function() {
   $("a[href*=#next-slide]").on("click",function(event) {
       event.preventDefault(); 
       jQuery('#home.backstretched').data('backstretch').prev();
+  });
+
+  $("#home.backstretched1").backstretch(["assets/images/home/slide-71.jpg", "assets/images/home/slide-72.jpg", "assets/images/home/slide-73.jpg", ], {
+    duration: 6000,
+    fade: 1200
+  });
+
+  $("a[href*=#prev-slide]").on("click",function(event) {
+      event.preventDefault(); 
+      jQuery('#home.backstretched1').data('backstretch').prev();
+    });
+  $("a[href*=#next-slide]").on("click",function(event) {
+      event.preventDefault(); 
+      jQuery('#home.backstretched1').data('backstretch').prev();
   });
 
   $('.dropdown').on('show.bs.dropdown', function(e) {
