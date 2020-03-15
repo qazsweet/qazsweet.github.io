@@ -137,6 +137,11 @@ jQuery(document).ready(function() {
       jQuery('#home.backstretched').data('backstretch').prev();
   });
 
+  $("#home.backstretched6").backstretch(["assets/images/home/slide-61.jpg", "assets/images/home/slide-62.jpg", "assets/images/home/slide-63.jpg", ], {
+    duration: 6000,
+    fade: 1200
+  });
+
   $("#home.backstretched1").backstretch(["assets/images/home/slide-71.jpg", "assets/images/home/slide-72.jpg", "assets/images/home/slide-73.jpg", ], {
     duration: 6000,
     fade: 1200
