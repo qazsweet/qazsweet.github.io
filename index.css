@@ -348,3 +348,105 @@ ul.share-group
 	background-size: cover;
 	background-position: center center;
 }
+
+.square-group
+{
+	text-align: center;
+	margin: auto;
+    padding: 0;
+    clear: both;
+    height: auto;
+}
+
+#div1, #div2, #div3
+{
+	display: inline-block;
+}
+
+.square
+{
+	position: relative;
+	margin: auto;
+	width: 150px;
+	height: 150px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.square span:nth-child(1)
+{
+	position: absolute;
+	top:0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	border: 2px solid #fff;
+	border-radius: 38% 62% 63% 37% / 41% 44% 56% 59%;
+	transition: 0.5s;
+	animation: animate 6s linear infinite;
+}
+
+.square:hover span:nth-child(1)
+{
+	background: rgba(111, 111, 224, 0.6)
+}
+
+.square span:nth-child(2)
+{
+	position: absolute;
+	top:0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	border: 2px solid #fff;
+	border-radius: 38% 62% 63% 37% / 41% 44% 56% 59%;
+	transition: 0.5s;
+	animation: animate 4s linear infinite;
+}
+
+.square:hover span:nth-child(2)
+{
+	background: rgba(111, 111, 224, 0.6)
+}
+
+.square span:nth-child(3)
+{
+	position: absolute;
+	top:0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	border: 2px solid #fff;
+	border-radius: 38% 62% 63% 37% / 41% 44% 56% 59%;
+	transition: 0.5s;
+	animation: animate 2s linear infinite;
+}
+
+.square:hover span:nth-child(3)
+{
+	background: rgba(111, 111, 224, 0.6)
+}
+
+@keyframes animate
+{
+	0%
+	{
+		transform: rotate(0deg);
+	}
+	100%
+	{
+		transform: rotate(360deg);
+	}
+}
+
+.content
+{
+	position: relative;
+	display: center;
+	margin-top: 20%;
+	padding: 6px 18px;
+	text-decoration: none;
+	color: #fff;
+	font-weight: 600;
+}
